@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2$y&l@%5lj3ise%_^w*=*wpltmq9po4^9&mn9es))$yxs0ow9i'
+SECRET_KEY = config.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'LogInRegistrationAPI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'Userregistration',
-        'HOST':'localhost',
-        'PORT':'27017'
+        'ENGINE': config.get('ENGINE'),
+        'NAME': config.get('NAME'),
+        'HOST':config.get('HOST'),
+        'PORT':config.get('PORT')
     }
 }
 
@@ -130,11 +130,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DEFAULT_AUTO_FIELD = config.get('DEFAULT_AUTO_FIELD')
-EMAIL_HOST= config.get('EMAIL_HOST')
-EMAIL_PORT= config.get('EMAIL_PORT')
-EMAIL_HOST_USER = config.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD=config.get('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
